@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    volumes:
+      - ollama_data:/root/.ollama
+      - ./entrypoint.sh:/entrypoint.sh
+    environment:
+      - OLLAMA_DEBUG=1
+    ports:
+      - "11434:11434"
+    restart: unless-stopped
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+
+  paperqa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: paperqa
+    depends_on:
+      - ollama
+    volumes:
+      - ./:/app
+      - pqa_index:/root/.pqa
+    tty: true
+
+volumes:
+  ollama_data:
+  pqa_index:
