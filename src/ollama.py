@@ -1,7 +1,8 @@
 
 from paperqa import Settings, ask
 from paperqa.settings import AgentSettings
-model = "ollama/llama3.1"
+# model = "ollama/llama3.1"
+model = "ollama/deepseek-r1:32b"
 
 local_llm_config = {
     "model_list": [

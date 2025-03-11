@@ -62,7 +62,7 @@ ollama pull mxbai-embed-large
 sudo systemctl start ollama
 ```
 
-- If Ollaman don’t start, run commands:
+- If Ollama don't start, run commands:
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable ollama
